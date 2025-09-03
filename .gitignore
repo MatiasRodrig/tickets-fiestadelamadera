@@ -4,3 +4,4 @@
 /cliente/node_modules
 /client/vite.config.js
 /main/node_modules
+/server/.env

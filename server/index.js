@@ -3,8 +3,12 @@ import { sequelize } from "./config/database.js";
 import productoRoutes from "./routes/producto.routes.js";
 import ticketRoutes from "./routes/ticket.routes.js";
 import cierreRoutes from "./routes/cierre.routes.js";
+import usuarioRoutes from './routes/usuario.routes.js';
 import path from "path";
 import { fileURLToPath } from "url";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 import './models/producto.model.js';
 import './models/ventas.model.js';
@@ -28,6 +32,7 @@ await sequelize.sync();
 app.use("/api", productoRoutes);
 app.use("/api", ticketRoutes);
 app.use("/api", cierreRoutes);
+app.use("/api", usuarioRoutes);
 
 // --- 👇 DEFENSA Nivel 1: Captura de Excepciones No Controladas ---
 // Esto evitará que un error no manejado en CUALQUIER parte de tu código

@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ProductsGridSell from '../components/ProductsGridSell';
 import styles from '../styles/cards.module.css';
+import { useAuth } from '../hooks/useAuth';
 
 function Home() {
     const [showCierreModal, setShowCierreModal] = useState(false);
@@ -9,6 +10,14 @@ function Home() {
         state: 'confirm', // puede ser 'confirm', 'loading', 'success', 'error'
         message: ''
     });
+    const { user, logout } = useAuth();
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigate('/login');
+    };
 
     const handleOpenCierreModal = () => {
         // Al abrir, siempre reseteamos al estado de confirmación.
@@ -80,16 +89,32 @@ function Home() {
 
     return (
         <div className={styles.homeContainer}>
+
+            <div style={{ position: 'absolute', top: '20px', right: '20px', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                <span style={{ color: '#fff' }}>Hola, {user?.username} ({user?.role})</span>
+                <button onClick={handleLogout} className={styles.homeButton} style={{ margin: 0, backgroundColor: '#555' }}>
+                    Salir
+                </button>
+            </div>
             {showCierreModal && <CierreModal />}
 
             <h1 className={styles.homeTitle}>Panel de Ventas</h1>
 
             <div className={styles.pagination}>
-                <Link to="/productos" className={styles.homeButton}>Ver Productos</Link>
-                <Link to="/registros" className={styles.homeButton}>Ver Registros</Link>
-                <Link to="/historial" className={styles.homeButton}>
-                    Historial de Cierres
-                </Link>
+                {/* 👇 RENDERIZADO CONDICIONAL 👇 */}
+                {user && user.role === 'administrador' && (
+                    <>
+                        <Link to="/productos" className={styles.homeButton}>
+                            Gestionar Productos
+                        </Link>
+                    </>
+                )}
+                  <Link to="/registros" className={styles.homeButton}>
+                            Registros
+                        </Link>
+                        <Link to="/historial" className={styles.homeButton}>
+                            Historial de Cierres
+                        </Link>
                 <button
                     onClick={handleOpenCierreModal}
                     className={styles.homeButton}
