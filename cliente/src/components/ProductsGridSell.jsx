@@ -57,25 +57,41 @@ function ProductsGrid() {
     const handleCancel = () => setShowModal(false)
 
     const handleCheckout = async () => {
+        // 💡 AVISO: El 'alert' original fue cambiado por un modal
+        // Lo mantendremos así para la confirmación de éxito.
+        // Aquí implementamos el envío del carrito en un solo fetch.
+
+        if (cart.length === 0) return; // No hacer nada si el carrito está vacío
+
         try {
-            for (let item of cart) {
-                await fetch('/api/imprimir', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ id: item.id, cantidad: item.cantidad })
-                });
+            // En lugar de un bucle, hacemos una sola llamada a un nuevo endpoint
+            const response = await fetch('/api/checkout', { // 👈 NUEVO ENDPOINT
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                // Enviamos el carrito completo en el cuerpo de la petición
+                body: JSON.stringify({ cart: cart }) // 👈 ENVIAMOS TODO EL CARRITO
+            });
+
+            const data = await response.json();
+
+            if (!data.ok) {
+                // Si el backend reporta un error, lo mostramos
+                throw new Error(data.mensaje || 'Ocurrió un error en el servidor.');
             }
 
-            alert('Compra registrada y tickets enviados!')
-            setCart([])
-            setSelectedProduct(null)
-            setQuantity(1)
-            setShowModal(false)
-            window.location.reload()
+            // Si todo fue bien, mostramos el mensaje de éxito y limpiamos
+            alert('Compra registrada y todos los tickets enviados!'); // Puedes cambiar esto a un modal de éxito
+            setCart([]);
+            setSelectedProduct(null);
+            setQuantity(1);
+            setShowModal(false);
+            
+
         } catch (error) {
-            console.error(error)
+            console.error("Error al finalizar la compra:", error);
+            alert(`Error al finalizar la compra: ${error.message}`);
         }
-    }
+    };
 
     const Card = ({ product }) => (
         <div className={styles.card} onClick={() => handleCardClick(product)}>

@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router"
 import Home from './pages/Home';
 import ProductosListados from './pages/Products';
 import Registros from './pages/Registros';
-
+import HistorialCierres from './pages/HistorialCierres'; 
   
 const AppRouter = () => {
   return (
@@ -12,6 +12,7 @@ const AppRouter = () => {
       <Route path="/" element={<Home />} />
       <Route path="/productos" element={<ProductosListados />} />
       <Route path="/registros" element={<Registros />} />
+      <Route path="/historial" element={<HistorialCierres />} />
     </Routes>
   );
 };

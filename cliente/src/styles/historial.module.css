@@ -1,0 +1,93 @@
+.historialContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.cierreCard {
+    background: #2a2a2a;
+    border-radius: 12px;
+    border: 1px solid #444;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.cierreCard:hover {
+    box-shadow: 0 0 15px rgba(0, 208, 255, 0.2);
+}
+
+.cierreHeader {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: #333;
+}
+
+.cierreHeader:hover {
+    background: #3a3a3a;
+}
+
+.cierreHeader div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.fecha {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.total {
+    font-size: 0.9rem;
+    color: #00d0ff;
+    font-weight: 500;
+}
+
+.toggleIcon {
+    font-size: 1.2rem;
+    color: #00d0ff;
+}
+
+.cierreBody {
+    padding: 20px;
+    background: #232323;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reprintButton {
+    margin-top: 16px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    border: none;
+    background: #555;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.reprintButton:hover:not(:disabled) {
+    background: #777;
+}
+
+.reprintButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

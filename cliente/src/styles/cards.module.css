@@ -417,3 +417,15 @@
 .cartFooter button:last-child:hover {
     background: #777;
 }
+
+
+.table tfoot tr {
+    background-color: #1a1a1a;
+    border-top: 2px solid #00d0ff;
+    color: #fff;
+}
+
+.table tfoot td {
+    font-size: 1.1rem;
+    color: #00d0ff;
+}
