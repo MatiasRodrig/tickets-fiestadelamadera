@@ -1,0 +1,44 @@
+### Crear un producto
+POST http://localhost:3000/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Cerveza",
+  "precio": 2000
+}
+
+### Crear otro producto
+POST http://localhost:3000/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Coca Cola 500ml",
+  "precio": 1700
+}
+
+### Listar todos los productos
+GET http://localhost:3000/api/productos
+
+### Obtener un producto por ID
+GET http://localhost:3000/api/productos/1
+
+### Actualizar un producto
+PUT http://localhost:3000/api/productos/1
+Content-Type: application/json
+
+{
+  "nombre": "Coca Cola 1L",
+  "precio": 900
+}
+
+### Eliminar un producto
+DELETE http://localhost:3000/api/productos/2
+
+### Imprimir ticket con productos seleccionados
+POST http://localhost:3000/api/imprimir
+Content-Type: application/json
+
+{
+  "id": 4,
+  "cantidad": 1
+}

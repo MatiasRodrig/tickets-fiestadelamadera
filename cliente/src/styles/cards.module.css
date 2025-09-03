@@ -1,0 +1,419 @@
+.cardContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 24px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+
+.card {
+    background: #2b2b2b;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.cardImg {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.card h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 8px;
+    text-align: center;
+    color: #fff;
+}
+
+.card p {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #00c3ff;
+    margin: 0;
+}
+
+/* Contenedor principal */
+.container {
+    padding: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #1e1e1e;
+    border-radius: 16px;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Título */
+.container h2 {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 1.8rem;
+    color: #00d0ff;
+}
+
+/* Controles */
+.controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.controls input[type="text"] {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: 1px solid #444;
+    background: #2a2a2a;
+    color: #fff;
+}
+
+.controls button {
+    padding: 8px 16px;
+    border-radius: 12px;
+    border: none;
+    background: #00d0ff;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.controls button:hover {
+    background: #00b4cc;
+}
+
+/* Tabla */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    background: #2a2a2a;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table th,
+.table td {
+    padding: 10px 12px;
+    text-align: left;
+}
+
+.table th {
+    background: #1f1f1f;
+    color: #00d0ff;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #444;
+}
+
+.table tbody tr:nth-child(even) {
+    background: #232323;
+}
+
+.table tbody tr:hover {
+    background: #333;
+}
+
+/* Paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.pagination button {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: none;
+    background: #00d0ff;
+    color: #000;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.pagination button:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: #00b4cc;
+}
+
+/* Modal */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: #2a2a2a;
+    padding: 24px;
+    border-radius: 16px;
+    width: 360px;
+    max-width: 90%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal h3 {
+    margin-bottom: 16px;
+    color: #00d0ff;
+}
+
+.modal form label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.modal form input[type="text"],
+.modal form input[type="number"],
+.modal form input[type="file"] {
+    margin-top: 6px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    background: #1f1f1f;
+    color: #fff;
+}
+
+.modalButtons {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.modalButtons button {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.modalButtons button:first-child {
+    background: #00d0ff;
+    color: #000;
+}
+
+.modalButtons button:first-child:hover {
+    background: #00b4cc;
+}
+
+.modalButtons button:last-child {
+    background: #555;
+    color: #fff;
+}
+
+.modalButtons button:last-child:hover {
+    background: #777;
+}
+
+/* Volver */
+.container>a>button {
+    margin-top: 16px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    border: none;
+    background: #00d0ff;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.container>a>button:hover {
+    background: #00b4cc;
+}
+
+/* Animación modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.homeContainer {
+    padding: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    background: #1e1e1e;
+    border-radius: 16px;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Título */
+.homeTitle {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #00d0ff;
+    margin-bottom: 24px;
+}
+
+/* Botón tipo link */
+.homeButton {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 12px;
+    background: #00d0ff;
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    margin-bottom: 32px;
+}
+
+.homeButton:hover {
+    background: #00b4cc;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 208, 255, 0.3);
+}
+
+/* Carrito flotante */
+.cart {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 300px;
+    max-height: 80vh;
+    overflow-y: auto;
+    background: #2a2a2a;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Título del carrito */
+.cart h3 {
+    text-align: center;
+    color: #00d0ff;
+    margin-bottom: 12px;
+}
+
+/* Item del carrito */
+.cartItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1f1f1f;
+    padding: 8px 12px;
+    border-radius: 12px;
+    gap: 8px;
+}
+
+/* Botones del carrito */
+.cartButtons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.cartButtons input[type="number"] {
+    width: 50px;
+    padding: 4px 6px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #1f1f1f;
+    color: #fff;
+    text-align: center;
+}
+
+.cartButtons button {
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: none;
+    background: #00d0ff;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.cartButtons button:hover {
+    background: #00b4cc;
+}
+
+/* Footer del carrito */
+.cartFooter {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    gap: 8px;
+}
+
+.cartFooter button {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.cartFooter button:first-child {
+    background: #00d0ff;
+    color: #000;
+}
+
+.cartFooter button:first-child:hover {
+    background: #00b4cc;
+}
+
+.cartFooter button:last-child {
+    background: #555;
+    color: #fff;
+}
+
+.cartFooter button:last-child:hover {
+    background: #777;
+}
